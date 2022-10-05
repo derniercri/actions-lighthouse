@@ -1,0 +1,24 @@
+name: Lighthouse CI
+description: Creating and sending a Lighthouse report to Slack
+
+inputs:
+  URL:
+    description: 'Url to test'
+    required: false
+    default: 'http://localhost:3000/'
+
+  SLACK_WEBHOOK_URL:
+    description: 'URL Slack Webhook'
+    required: true
+
+  START_SERVER_COMMAND:
+    description: The command to run to start the server
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.URL }}
+    - ${{ inputs.SLACK_WEBHOOK_URL }}
+    - ${{ inputs.START_SERVER_COMMAND }}
