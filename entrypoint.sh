@@ -1,6 +1,7 @@
 #!/bin/bash
-
-lhci autorun --collect.url="$URL" --collect.startServerCommand="$START_SERVER_COMMAND" --config="config/lighthouserc.json" &
+ls -l app/config
+pwd
+lhci autorun --collect.url="$URL" --collect.startServerCommand="$START_SERVER_COMMAND" --config="app/config/lighthouserc.json" &
 wait $!
 
 result=$(cat report-lhci/manifest.json | jq '.[0] .summary' | tr -d {}'"')
