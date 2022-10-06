@@ -1,6 +1,6 @@
 FROM node:16.14
 
-ENV JQ_VERSION='1.5'
+ENV JQ_VERSION='1.6'
 
 RUN yarn global add @lhci/cli@0.8.x
 RUN wget --no-check-certificate https://raw.githubusercontent.com/stedolan/jq/master/sig/jq-release.key -O /tmp/jq-release.key && \
@@ -13,6 +13,9 @@ RUN wget --no-check-certificate https://raw.githubusercontent.com/stedolan/jq/ma
   rm -f /tmp/jq-release.key && \
   rm -f /tmp/jq-linux64.asc && \
   rm -f /tmp/jq-linux64
+RUN apt update && apt install -y \
+  chromium-browser \
+  chromium-chromedriver
 
 WORKDIR /app
 COPY entrypoint.sh /entrypoint.sh
