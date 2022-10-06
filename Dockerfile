@@ -1,5 +1,7 @@
 FROM node:16.14
+
 ENV JQ_VERSION='1.5'
+
 RUN yarn global add @lhci/cli@0.8.x
 RUN wget --no-check-certificate https://raw.githubusercontent.com/stedolan/jq/master/sig/jq-release.key -O /tmp/jq-release.key && \
   wget --no-check-certificate https://raw.githubusercontent.com/stedolan/jq/master/sig/v${JQ_VERSION}/jq-linux64.asc -O /tmp/jq-linux64.asc && \
@@ -11,6 +13,7 @@ RUN wget --no-check-certificate https://raw.githubusercontent.com/stedolan/jq/ma
   rm -f /tmp/jq-release.key && \
   rm -f /tmp/jq-linux64.asc && \
   rm -f /tmp/jq-linux64
+
 WORKDIR /app
 COPY entrypoint.sh /entrypoint.sh
 COPY config/lighthouserc.json /lighthouserc.json

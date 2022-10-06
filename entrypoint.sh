@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# lhci autorun --collect.url="$URL" --collect.startServerCommand="$START_SERVER_COMMAND" --collect.numberOfRuns="1" --upload.target="filesystem" --upload.outputDir="./report-lhci" --upload.ignoreDuplicateBuildFailure"true" --no-lighthouserc="true"
+lhci autorun --collect.url="$1" --collect.startServerCommand="$3" --collect.numberOfRuns="1" --upload.target="filesystem" --upload.outputDir="./report-lhci" --upload.ignoreDuplicateBuildFailure"true" --no-lighthouserc="true"
 ls -l
 # wait $!
 
@@ -34,4 +34,4 @@ ls -l
 
 # curl -H "Content-type: application/json" \
 # --data "{'blocks':[{'type': 'section','text': {'type': 'mrkdwn','text': 'Rapport LightHouse.\n*URL:* https://lab.derniercri.io'}},{'type': 'divider'}],'attachments':[{'color': '${performance_color}','blocks':[{'type':'section','text':{'type':'mrkdwn','text':'*Performance:* ${performance}'}}]},{'color':'${accessibility_color}','blocks':[{'type':'section','text':{'type':'mrkdwn','text':'*Accessibilité:* ${accessibility}'}}]},{'color':'${bestPratice_color}','blocks':[{'type': 'section','text': {'type': 'mrkdwn','text':'*Bonnes pratiques:* ${bestPratice}'}}]},{'color': '${seo_color}','blocks': [{'type': 'section','text': {'type': 'mrkdwn','text': '*SEO:* ${seo}'}}]},{'color': '${pwa_color}','blocks': [{'type': 'section','text': {'type': 'mrkdwn','text': '*PWA:* ${pwa}'}}]}]}" \
-# -X POST $SLACK_WEBHOOK_URL
+# -X POST $2
