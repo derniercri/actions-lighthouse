@@ -1,6 +1,6 @@
 #!/bin/bash
 
-lhci autorun --collect.url="$URL" --collect.startServerCommand="$START_SERVER_COMMAND" --config="app/config/lighthouserc.json" &
+lhci autorun --collect.url="$URL" --collect.startServerCommand="$START_SERVER_COMMAND" --collect.numberOfRuns="1" --upload.target="filesystem" --upload.outputDir="./report-lhci" --upload.ignoreDuplicateBuildFailure"true"
 wait $!
 
 result=$(cat report-lhci/manifest.json | jq '.[0] .summary' | tr -d {}'"')
