@@ -13,5 +13,5 @@ RUN wget --no-check-certificate https://raw.githubusercontent.com/stedolan/jq/ma
   rm -f /tmp/jq-linux64
 WORKDIR /app
 COPY entrypoint.sh /entrypoint.sh
-COPY config/lighthouserc.json /config/lighthouserc.json
+COPY config/lighthouserc.json /lighthouserc.json
 ENTRYPOINT [ "/entrypoint.sh" ]
