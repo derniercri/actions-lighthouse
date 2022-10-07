@@ -13,9 +13,9 @@ RUN wget --no-check-certificate https://raw.githubusercontent.com/stedolan/jq/ma
   rm -f /tmp/jq-release.key && \
   rm -f /tmp/jq-linux64.asc && \
   rm -f /tmp/jq-linux64
-RUN apt update && apt install -y \
-  chromium-browser \
-  chromium-chromedriver
+
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 
 WORKDIR /app
 COPY entrypoint.sh /entrypoint.sh
