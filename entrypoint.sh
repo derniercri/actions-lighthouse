@@ -1,7 +1,5 @@
 #!/bin/bash
 
-google-chrome-stable -version
-
 lhci autorun --chrome-flags="google-chrome-stable --headless" --collect.url="$1" --collect.startServerCommand="$3" --collect.numberOfRuns="1" --upload.target="filesystem" --upload.outputDir="./report-lhci" --upload.ignoreDuplicateBuildFailure"true" --no-lighthouserc="true"
 wait $!
 
