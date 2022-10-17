@@ -1,8 +1,7 @@
 FROM ubuntu:22.04
-RUN apt-get update -y && apt-get install -y
+RUN apt-get update -y && \
+  apt-get install -y
 
-# Install wget
-RUN apt-get install -y wget
 
 # Node
 RUN apt install curl -y
@@ -12,11 +11,15 @@ RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
 # JQ
 RUN apt-get install -y jq
 
+# Lighthouse
 RUN npm -g install @lhci/cli@0.8.x
+
+# Wget
+RUN apt-get install -y wget
 
 # Chrome
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN dpkg -i google-chrome*.deb
+RUN apt-get install -y ./google-chrome-stable_current_amd64.deb
 
 WORKDIR /app
 COPY entrypoint.sh /entrypoint.sh
