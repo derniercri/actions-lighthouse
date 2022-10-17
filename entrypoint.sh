@@ -1,6 +1,8 @@
 #!/bin/bash
 
-lhci autorun --collect.url="$1" --collect.startServerCommand="$3" --collect.numberOfRuns="1" --upload.target="filesystem" --upload.outputDir="./report-lhci" --upload.ignoreDuplicateBuildFailure"true" --no-lighthouserc="true"
+google-chrome-stable -version
+
+lhci autorun --chrome-flags="google-chrome-stable --headless" --collect.url="$1" --collect.startServerCommand="$3" --collect.numberOfRuns="1" --upload.target="filesystem" --upload.outputDir="./report-lhci" --upload.ignoreDuplicateBuildFailure"true" --no-lighthouserc="true"
 wait $!
 
 result=$(cat report-lhci/manifest.json | jq '.[0] .summary' | tr -d {}'"')
