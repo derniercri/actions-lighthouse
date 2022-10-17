@@ -1,13 +1,15 @@
 FROM ubuntu:22.04
 RUN apt-get update -y && apt-get install -y
 
+# Install wget
+RUN apt-get install -y wget
+
 # Node
 RUN apt install curl -y
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
   apt-get install -y nodejs
 
 # JQ
-# ENV JQ_VERSION='1.6'
 RUN apt-get install -y jq
 
 RUN npm -g install @lhci/cli@0.8.x
