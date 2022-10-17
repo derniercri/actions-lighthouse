@@ -15,7 +15,7 @@ RUN apt-get install -y jq
 RUN npm install --global yarn
 
 # Lighthouse
-RUN yarn add global @lhci/cli@0.8.x
+RUN yarn global add @lhci/cli@0.8.x
 
 # Wget
 RUN apt-get install -y wget
