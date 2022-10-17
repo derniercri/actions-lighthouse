@@ -11,8 +11,11 @@ RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
 # JQ
 RUN apt-get install -y jq
 
+# Yarn
+RUN npm install --global yarn
+
 # Lighthouse
-RUN npm -g install @lhci/cli@0.8.x
+RUN yarn add global @lhci/cli@0.8.x
 
 # Wget
 RUN apt-get install -y wget
