@@ -2,7 +2,6 @@ FROM ubuntu:22.04
 RUN apt-get update -y && \
   apt-get install -y
 
-
 # Node
 RUN apt install curl -y
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
