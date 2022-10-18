@@ -27,7 +27,6 @@ RUN apt-get install chromium-browser xvfb
 RUN yarn global add @lhci/cli@0.8.x
 
 WORKDIR /app
-USER 1001
 COPY entrypoint.sh /entrypoint.sh
 COPY config/lighthouserc.json /lighthouserc.json
 ENTRYPOINT [ "/entrypoint.sh" ]
