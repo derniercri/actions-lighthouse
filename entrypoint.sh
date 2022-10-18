@@ -1,5 +1,16 @@
 #!/bin/bash
 
+export DISPLAY=:1.5
+TMP_PROFILE_DIR=$(mktemp -d -t lhci.XXXXXXXXXX)
+
+# start up chromium inside xvfb
+xvfb-run --server-args='-screen 0, 1024x768x16' \
+    chromium-browser --user-data-dir=$TMP_PROFILE_DIR
+    --start-maximized \
+    --no-first-run \
+    --remote-debugging-port=9222 "about:blank"
+
+
 lhci autorun --chrome-flags="--headless --no-sandbox --disable-gpu --remote-debugging-port=9222" --collect.url="$1" --collect.numberOfRuns="1" --upload.target="filesystem" --upload.outputDir="./report-lhci" --upload.ignoreDuplicateBuildFailure"true" --no-lighthouserc="true"
 wait $!
 
