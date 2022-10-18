@@ -2,6 +2,7 @@ FROM ubuntu:22.04
 RUN apt-get update -y && \
   apt-get install -y
 
+USER 1001
 
 # Node
 RUN apt install curl -y

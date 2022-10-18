@@ -1,6 +1,6 @@
 #!/bin/bash
 
-lhci autorun --chrome-flags="--headless --no-sandbox" --collect.url="$1" --collect.numberOfRuns="1" --upload.target="filesystem" --upload.outputDir="./report-lhci" --upload.ignoreDuplicateBuildFailure"true" --no-lighthouserc="true"
+lhci autorun --chrome-flags="--headless --no-sandbox --disable-gpu --remote-debugging-port=9222" --collect.url="$1" --collect.numberOfRuns="1" --upload.target="filesystem" --upload.outputDir="./report-lhci" --upload.ignoreDuplicateBuildFailure"true" --no-lighthouserc="true"
 wait $!
 
 result=$(cat report-lhci/manifest.json | jq '.[0] .summary' | tr -d {}'"')
