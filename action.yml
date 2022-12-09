@@ -17,5 +17,4 @@ inputs:
 
 runs:
   using: 'node16'
-  pre: 'format_lighthouse.sh'
   main: 'index.js'
