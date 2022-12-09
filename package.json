@@ -1,0 +1,17 @@
+{
+  "name": "actions-lighthouse",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/derniercri/actions-lighthouse.git",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "axios": "^1.1.3",
+    "chrome-launcher": "^0.15.1",
+    "chromium": "^3.0.3",
+    "eslint": "^8.27.0"
+  },
+  "devDependencies": {
+    "lighthouse": "^9.6.8"
+  }
+}
