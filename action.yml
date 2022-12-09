@@ -16,9 +16,6 @@ inputs:
     required: true
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.URL }}
-    - ${{ inputs.SLACK_WEBHOOK_URL }}
-    - ${{ inputs.START_SERVER_COMMAND }}
+  using: 'node16'
+  pre: 'format_lighthouse.sh'
+  main: 'index.js'
